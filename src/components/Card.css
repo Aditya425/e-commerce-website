@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main__container__card {
+    color: white;
+    height: 250px;
+    width: 250px;
+    border: 1px solid white;
+    text-align: center;
+    position: relative;
+    border-radius: 15px;
+}
+
+.main__container__card> hr {
+    position: absolute;
+    width: 250px;
+}
+
+.main__container__card> img {
+    left: 20px;
+    right: 10px;
+    margin-top: 10px;
+    width: 150px;
+    height: 150px;
+}
+
+.main__container__card__btn {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.plus {
+    position: absolute;
+    left: 40px;
+    top: 3px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.minus {
+    position: absolute;
+    right: 40px;
+    top: 3px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.main__container__card__btn p {
+    position: absolute;
+    top: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

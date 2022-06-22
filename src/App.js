@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import "./App.css"
+import Navbar from './components/Navbar'
+import Card from './components/Card'
+import { collection, getDocs } from "firebase/firestore"
+import db from "C:/Users/Aditya/Documents/reactjs-practise/e-commerce-website/src/firebase-config"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+async function onTypeSelected(type = "Electronics") {
+  var querySnapshot = await getDocs(collection(db, type))
+  console.log(querySnapshot)
+  var a = querySnapshot.map(
+    (doc) => {
+      return <Card data={doc.data()} />
+    }
+  )
+
+  console.log(a)
 }
 
-export default App;
+function App() {
+  onTypeSelected()
+  // var products = onTypeSelected()
+  //   .then((prods) => {
+  //     return prods
+  //   })
+  return (
+    <div className='main-root'>
+        <Navbar onTypeSelected={onTypeSelected}/>
+        <div className='main__products'>
+          {/* {
+            products == null ? null : products
+          } */}
+        </div>
+    </div>
+  )
+}
+
+export default App
