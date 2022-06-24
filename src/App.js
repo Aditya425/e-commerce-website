@@ -14,7 +14,7 @@ function App() {
       var a = []
       querySnapshot.forEach(
         (doc) => {
-          a.push(<Card data={doc.data()} />)
+          a.push(<Card data={doc.data()} type={type}/>)
         }
       )
 

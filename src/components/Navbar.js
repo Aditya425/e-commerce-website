@@ -18,7 +18,7 @@ function Navbar({ onTypeSelected }) {
 
                 </div>
                 <div className='main-navbar-item'>
-                    <div onClick={() => onTypeSelected("Fashion")}>Fashion</div>
+                    <div onClick={() => onTypeSelected("Appliances")}>Appliances</div>
 
                 </div>
                 <div className='main-navbar-item'>

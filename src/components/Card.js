@@ -3,8 +3,11 @@ import "./Card.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faMinus } from '@fortawesome/free-solid-svg-icons'
+import db from "C:/Users/Aditya/Documents/reactjs-practise/e-commerce-website/src/firebase-config"
+import { setDoc, doc, namedQuery } from 'firebase/firestore'
 
 function Card(props) {
+
   return (
     <div className='main__container__card'>
       <img src={props.data.image} />
@@ -18,22 +21,31 @@ function Card(props) {
       <hr />
       <div style={{ marginTop: 10 }} />
       <div className='main__container__card__btn'>
-        <CurrentQuantity price={props.data.price}/>
+        <CurrentQuantity price={props.data.price} image={props.data.image} name={props.data.name} type={props.type}/>
       </div>
     </div>
   )
 }
 
-function onPlusMinusClicked(plusOrMinus, currentValue, price) {
+async function onPlusMinusClicked(plusOrMinus, currentValue, price, image, name, type) {
   if (plusOrMinus === null) {
     return;
   }
-
+  price = price.replace(/[^0-9]/g,'');
   const newValue = price * currentValue;
+  console.log(newValue)
+  var userData = {
+    image: image,
+    name: name,
+    totalPrice: newValue
+  }
+
+  const prodRef = doc(db, "Users", "dfxTizKyFr4mQ1Y7gq6b", type, name)
   
+  await setDoc(prodRef, userData)
 }
 
-function CurrentQuantity({price}) {
+function CurrentQuantity({image, price, name, type}) {
   const [quantity, setQuantity] = useState({
     value: 0,
     clicked: null
@@ -41,7 +53,7 @@ function CurrentQuantity({price}) {
 
   useEffect(() => {
     //console.log(price)
-    onPlusMinusClicked(quantity.clicked, quantity.value, price)
+    onPlusMinusClicked(quantity.clicked, quantity.value, price, image, name, type)
   }, [quantity])
 
   return (
