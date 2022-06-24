@@ -29,6 +29,10 @@ function Navbar({ onTypeSelected }) {
                     <div onClick={() => onTypeSelected("Video Games")}>Video Games</div>
 
                 </div>
+                <div className='main-navbar-item'>
+                    <div onClick={() => onTypeSelected("Cart")}>Cart</div>
+
+                </div>
             </nav>
         </div>
     )

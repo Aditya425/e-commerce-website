@@ -4,6 +4,6 @@
     grid-template-rows: 260px 260px 260px;
     grid-template-columns: 260px 260px 260px;
     justify-content: center;
-    row-gap: 20px;
-    column-gap: 20px;
+    row-gap: 150px;
+    column-gap: 40px;
 }
