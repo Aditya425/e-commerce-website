@@ -31,9 +31,11 @@ async function onPlusMinusClicked(plusOrMinus, currentValue, price, image, name,
   if (plusOrMinus === null) {
     return;
   }
-  price = price.replace(/[^0-9]/g,'');
+  
+  if (!isNaN(price)) {
+    price = price.replace(/[^0-9]/g,'');
+  }
   const newValue = price * currentValue;
-  console.log(newValue)
   var userData = {
     image: image,
     name: name,
