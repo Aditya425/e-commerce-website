@@ -1,0 +1,35 @@
+.payment__header {
+    color: white;
+    font-size: 70px;
+    text-align: center;
+}
+
+.payment__box {
+    margin: 200px;
+    border: 1px solid white;
+    width: 1000px;
+    position: relative;
+    left: 20px;
+    height: 80px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.payment__content {
+    padding: 10px;
+}
+
+.text {
+    width: 70%;
+    padding: 70px;
+}
+
+.number {
+    width: 10%;
+    padding: 70px;
+}
+
+.date {
+    width: 10%;
+    padding: 70px;
+}
