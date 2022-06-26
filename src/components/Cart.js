@@ -4,6 +4,8 @@ import { collection, getDocs, query, where } from "firebase/firestore"
 import db from "C:/Users/Aditya/Documents/reactjs-practise/e-commerce-website/src/firebase-config"
 import ClipLoader from "react-spinners/ClipLoader"
 import { css } from "@emotion/react";
+import { BrowserRouter as Route, Routes, Link } from "react-router-dom"
+import Payment from './Payment'
 
 var totalSum = 0;
 
@@ -51,23 +53,30 @@ function Cart() {
   }, []
   )
   return (
-    <div className='main__container'>
-      {/* <div className='main__heading'>
+    <Routes>
+      <div className='main__container'>
+        {/* <div className='main__heading'>
         <div className='item'>Image</div>
         <div className='item'>Name</div>
         <div className='item'>Price</div>
         <div className='item'>Quantity</div>
       </div> */}
-      {
-        loading ? <ClipLoader color={'#FFFFFF'} css={css`position: relative; left: 40%`} loading={loading} size={150} /> :
-          <>
-            <div className='main__content'>
-              {products}
-            </div>
-            <div className='button'><a href='./Payment.js'> Pay ₹{totalSum} Now </a></div>
-          </>
-      }
-    </div>
+        {
+          loading ? <ClipLoader color={'#FFFFFF'} css={css`position: relative; left: 40%`} loading={loading} size={150} /> :
+            <>
+              <div className='main__content'>
+                {products}
+              </div>
+              <div className='button'><Link to="/Payment"> Pay ₹{totalSum} Now </Link></div>
+            </>
+        }
+      </div>
+	
+		<Route path='/Payment'>
+			<Payment />
+		</Route>
+	  
+    </Routes>
   )
 }
 
