@@ -31,7 +31,7 @@ function Payment() {
 			},
 			body: JSON.stringify(data)
 		}
-		
+
 		fetch(url, params).then(response => response.json()).then(data => {
 			getData2(data.token)
 		})
@@ -39,10 +39,28 @@ function Payment() {
 
 	function getData2(token) {
 		let tokenObject = {
-			amount: "100.0",
+			name: "Aditya Dixit",
+			code: token
+		}
+		let params = {
+			method: "POST",
+			headers: {
+				"Authorization": constants.PAYMENT_PASSCODE,
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"
+			},
+			body: JSON.stringify(tokenObject)
+		}
+		let uri = "https://cors-anywhere.herokuapp.com/https://api.na.bambora.com/v1/profiles"
+		fetch(uri, params).then(response => response.json()).then(data => getData3(data.customer_code))
+	}
+
+	function getData3(custId) {
+		let body = {
+			amount: 100.00,
 			payment_method: "payment_profile",
 			payment_profile: {
-				customer_code: "D08a4F40374EF8c167aA0471B",
+				customer_code: custId,
 				card_id: 1,
 				complete: true
 			}
@@ -50,12 +68,14 @@ function Payment() {
 		let params = {
 			method: "POST",
 			headers: {
-				Authorization: constants.PAYMENT_PASSCODE,
+				"Authorization": constants.PAYMENT_PASSCODE,
 				"Content-Type": "application/json",
+				"Access-Control-Allow-Origin": "*"
 			},
-			body: JSON.stringify(tokenObject)
+			body: JSON.stringify(body)
 		}
 		let uri = "https://cors-anywhere.herokuapp.com/https://api.na.bambora.com/v1/payments"
+
 		fetch(uri, params).then(response => response.json()).then(data => console.log(data))
 	}
 
@@ -64,9 +84,9 @@ function Payment() {
 			<header className='payment__header'>Payment</header>
 			<div className='payment__box'>
 				<div className='payment__content'>
-					<span className='text' ><input ref={textRef} type="text" placeholder='Enter Card Number'/></span>
-					<span className='number' ><input ref={numberRef} type="number" placeholder='Enter CVV'/></span>
-					<span className='date'><input ref={dateRef} type="text" placeholder='Enter Expiry Date'/></span>
+					<span className='text' ><input ref={textRef} type="text" placeholder='Enter Card Number' /></span>
+					<span className='number' ><input ref={numberRef} type="number" placeholder='Enter CVV' /></span>
+					<span className='date'><input ref={dateRef} type="text" placeholder='Enter Expiry Date' /></span>
 				</div>
 			</div>
 			<button className='btn' onClick={() => getData1()}>Pay</button>

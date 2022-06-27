@@ -1,6 +1,6 @@
 
 const constants = {
-    PAYMENT_PASSCODE: "Passcode MzAwMjEyOTA2OkFkaTEyM0BiYW1ib3Jh"
+    PAYMENT_PASSCODE: "Passcode MzAwMjEyOTA2OjZGMEIzODZFOUEyNzQwNDFCRjkyNjREMTJBNTUzQjJG"
 }
 
 export default constants
