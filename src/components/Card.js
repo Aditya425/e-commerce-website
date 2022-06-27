@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import db from "C:/Users/Aditya/Documents/reactjs-practise/e-commerce-website/src/firebase-config"
-import { setDoc, doc, namedQuery } from 'firebase/firestore'
+import { setDoc, doc } from 'firebase/firestore'
 
 function Card(props) {
 
