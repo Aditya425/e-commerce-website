@@ -1,0 +1,39 @@
+.main__title {
+    text-align: center;
+    color: white;
+    font-size: 70px;
+}
+
+.login__box {
+    width: 400px;
+    height: 300px;
+    border: 1px solid white;
+    position: absolute;
+    left: 40%;
+    top: 19%;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.login__box input[type="email"] {
+    margin-bottom: 30px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.login__box input[type="password"] {
+    margin-bottom: 30px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.login__box button {
+    height: 40px;
+    background-color: #161819;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}

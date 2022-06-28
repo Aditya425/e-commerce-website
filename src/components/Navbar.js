@@ -1,8 +1,18 @@
 import React from 'react'
 import "./Navbar.css"
+import { signOut } from 'firebase/auth'
+import { auth } from "../firebase-config"
+import { useNavigate } from 'react-router-dom'
 import logo from "C:/Users/Aditya/Documents/reactjs-practise/e-commerce-website/src/images/logo.png"
 
 function Navbar({ onTypeSelected }) {
+
+    const navigate = useNavigate()
+    const SignOut = async () => {
+        await signOut(auth)
+        navigate("/")
+    }
+
     return (
         <div className='main-container'>
             <nav className='main-navbar'>
@@ -31,7 +41,9 @@ function Navbar({ onTypeSelected }) {
                 </div>
                 <div className='main-navbar-item'>
                     <div onClick={() => onTypeSelected("Cart")}>Cart</div>
-
+                </div>
+                <div className='main-navbar-item'>
+                    <div onClick={SignOut}>Signout</div>
                 </div>
             </nav>
         </div>

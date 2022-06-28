@@ -1,4 +1,4 @@
-.login__box {
+.signup__box {
     width: 400px;
     height: 400px;
     border: 1px solid white;
@@ -11,29 +11,36 @@
     padding: 20px;
 }
 
-.login__box input[type="email"] {
+.signup__box input[type="email"] {
     margin-bottom: 30px;
     height: 40px;
     border-radius: 5px;
 }
 
-.login__box input[type="password"] {
+.signup__box input[type="password"] {
     margin-bottom: 30px;
     height: 40px;
     border-radius: 5px;
 }
 
-.login__box input[type="textarea"] {
+.signup__box input[type="textarea"] {
     margin-bottom: 30px;
     height: 40px;
     border-radius: 5px;
 }
 
-.login__box button {
+.signup__box button {
     height: 40px;
     background-color: #161819;
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
+}
+
+.or__login {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
     cursor: pointer;
 }

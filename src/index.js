@@ -4,14 +4,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Payment from "./components/Payment"
 import App from "./App"
 import Signup from "./Auth/Signup"
+import Login from "./Auth/Login"
 
 ReactDOM.render(
     <Router>
         <Routes>
-            <Route path='/' element={<Signup />} />
+            <Route path='/Signup' element={<Signup />} />
             <Route path='/App' element={<App />} />
             <Route path="/Payment" element={<Payment />} />
-            <Route path="/Login" element={<Payment />} />
+            <Route path="/" element={<Login />} />
         </Routes>
     </Router>
     , document.getElementById("root")
