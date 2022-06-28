@@ -13,7 +13,14 @@
     border: 1px solid white;
     text-align: center;
     position: relative;
-    border-radius: 15px;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 12px 12px;
+    transition: 0.2s;
+
+}
+
+.main__container__card:hover {
+    transform: translateY(-1rem)
 }
 
 .main__container__card> hr {
@@ -58,7 +65,14 @@
     top: 3px;
 }
 
-
+.btn__add__to__cart {
+    background-color: #161819;
+    color: white;
+    border: 1px solid white;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: large;
+}
 
 
 

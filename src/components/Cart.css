@@ -1,5 +1,5 @@
 .main__container {
-	width: 560px;
+	width: 690px;
 	height: 520px;
 	position: absolute;
 	top: 0;
@@ -44,4 +44,13 @@
 a {
 	text-decoration: none;
 	color: white;
+}
+
+.item__plus__minus {
+	display: flex;
+	margin-top: 10px;
+}
+
+.item__plus__minus:nth-child(1) {
+	cursor: pointer;
 }

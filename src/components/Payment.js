@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { useLocation, useNavigate } from "react-router-dom"
 
 import './Payment.css'
 import constants from '../constants'
@@ -8,6 +9,9 @@ function Payment() {
 	const textRef = useRef()
 	const numberRef = useRef()
 	const dateRef = useRef()
+	const location = useLocation()
+	const navigate = useNavigate()
+
 
 	//pay button in my website calls this method
 	function getData1() {
@@ -15,19 +19,25 @@ function Payment() {
 		let cvv = numberRef.current.value
 		let expiryMonth = dateRef.current.value.split("/")[0]
 		let expiryYear = dateRef.current.value.split("/")[1]
+		
+
+		if (cardNum == '' || cvv == '' || expiryMonth == '' || expiryYear == '') {
+			return
+		}
+
 		let url = "https://cors-anywhere.herokuapp.com/https://api.na.bambora.com/scripts/tokenization/tokens"
 		let data = {
 			number: cardNum,
 			expiry_month: expiryMonth,
 			expiry_year: expiryYear,
-			cvv: cvv,
+			cvd: cvv,
 		}
 		//https://cors-anywhere.herokuapp.com/
 		let params = {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"Access-Control-Allow-Origin": "true"
+				"Access-Control-Allow-Origin": "*"
 			},
 			body: JSON.stringify(data)
 		}
@@ -57,12 +67,14 @@ function Payment() {
 
 	function getData3(custId) {
 		let body = {
-			amount: 100.00,
-			payment_method: "payment_profile",
-			payment_profile: {
-				customer_code: custId,
-				card_id: 1,
-				complete: true
+			amount: parseInt(location.state.totalSum),
+			payment_method: "card",
+			card: {
+				name: "Aditya Dixit",
+				number: textRef.current.value,
+				expiry_month: "07",
+				expiry_year: "23",
+				cvd: numberRef.current.value
 			}
 		}
 		let params = {
@@ -76,7 +88,11 @@ function Payment() {
 		}
 		let uri = "https://cors-anywhere.herokuapp.com/https://api.na.bambora.com/v1/payments"
 
-		fetch(uri, params).then(response => response.json()).then(data => console.log(data))
+		fetch(uri, params).then(response => response.json()).then(
+			data => {
+				navigate("/PaymentSuccessful")
+			}
+		)
 	}
 
 	return (
